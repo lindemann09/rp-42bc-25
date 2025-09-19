@@ -572,11 +572,11 @@ Solution
 <p>In the arguments section, there are explanations for each of the arguments. <code>n</code> is the number of random numbers we want to create, <code>mean</code> is the mean of the data points we will create and <code>sd</code> is the standard deviation of the set. In the details section it notes that if no values are entered for <code>mean</code> and <code>sd</code> it will use a default of 0 and 1 for these values. Because there is no default value for <code>n</code> it must be specified otherwise the code won’t run.</p>
 <p>Let’s try an example and just change the required argument <code>n</code> to ask <em>R</em> to produce 5 random numbers.</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="basics.html#cb48-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1]  0.4191155 -2.9581174 -1.4710899 -0.3542078 -1.0922510</code></pre>
+<pre><code>## [1]  0.0506697  0.1495186  0.9796549 -0.8745879 -0.3798509</code></pre>
 <p>The random numbers have a mean of 0 and an SD of 1. Of course, since this are random numbers, you have probably got different numbers. Run the function again and you will see that you get each time different ‘’random’’ numbers.</p>
 <p>Now we can change the additional arguments to produce a different set of numbers.</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="basics.html#cb50-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span></code></pre></div>
-<pre><code>## [1]  90.90848  88.46184  82.55637  88.15204 117.63618</code></pre>
+<pre><code>## [1]  98.75877  95.76546 128.52389  88.17156 111.15227</code></pre>
 <p>This time <em>R</em> has still produced 5 random numbers, but now this set of numbers has a mean of 100 and a standard deviation of 15 as specified (this is the distribution of the scores in many IQ tests). Always remember to use the help documentation to help you understand what arguments a function requires.</p>
 </div>
 <div id="argument-names" class="section level3 hasAnchor" number="4.6.4">
