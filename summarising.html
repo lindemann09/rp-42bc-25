@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>12 Summarizing &amp; Aggregating Data | Data Processing and Analysis in R (2025)</title>
+  <meta name="description" content="12 Summarizing &amp; Aggregating Data | Data Processing and Analysis in R (2025)" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="12 Summarizing &amp; Aggregating Data | Data Processing and Analysis in R (2025)" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/R-course-logo.png" />
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="12 Summarizing &amp; Aggregating Data | Data Processing and Analysis in R (2025)" />
+  
+  
+  <meta name="twitter:image" content="/images/R-course-logo.png" />
+
+<meta name="author" content="Oliver Lindemann" />
+
+
+<meta name="date" content="2025-09-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="transformingdata.html"/>
+<link rel="next" href="structuring-tabular-data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+<link rel="stylesheet" href="include/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><strong>Data Processing and Analysis in R</strong></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-learning-r"><i class="fa fa-check"></i><b>1.1</b> Why learning <em>R</em>?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#what-do-i-learn-in-this-course"><i class="fa fa-check"></i><b>1.2</b> What do I learn in this course?</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-rstudio"><i class="fa fa-check"></i><b>1.3</b> What is RStudio?</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#code-examples"><i class="fa fa-check"></i><b>1.4</b> Code examples</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#trial-and-error-learning"><i class="fa fa-check"></i><b>1.5</b> Trial-and-error learning</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="findinghelp.html"><a href="findinghelp.html"><i class="fa fa-check"></i><b>2</b> Finding Help</a></li>
+<li class="part"><span><b>I Basics</b></span></li>
+<li class="chapter" data-level="3" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>3</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#installing-r-and-rstudio-on-your-pc"><i class="fa fa-check"></i><b>3.1</b> Installing <em>R</em> and <em>RStudio</em> on your PC</a></li>
+<li class="chapter" data-level="3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-project"><i class="fa fa-check"></i><b>3.2</b> Creating a Project</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>4</b> Basics of Programming in R</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="basics.html"><a href="basics.html#comments-in-program-code"><i class="fa fa-check"></i><b>4.1</b> Comments in Program Code</a></li>
+<li class="chapter" data-level="4.2" data-path="basics.html"><a href="basics.html#variables-and-objects"><i class="fa fa-check"></i><b>4.2</b> Variables and Objects</a></li>
+<li class="chapter" data-level="4.3" data-path="basics.html"><a href="basics.html#basic-operations"><i class="fa fa-check"></i><b>4.3</b> Basic operations</a></li>
+<li class="chapter" data-level="4.4" data-path="basics.html"><a href="basics.html#non-numerical-data-types"><i class="fa fa-check"></i><b>4.4</b> Non-numerical data types</a></li>
+<li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#comparing"><i class="fa fa-check"></i><b>4.5</b> Comparing values</a></li>
+<li class="chapter" data-level="4.6" data-path="basics.html"><a href="basics.html#functions"><i class="fa fa-check"></i><b>4.6</b> Functions</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Structures</b></span></li>
+<li class="chapter" data-level="5" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>5</b> Atomic Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vectors.html"><a href="vectors.html#number-sequences"><i class="fa fa-check"></i><b>5.1</b> Number sequences</a></li>
+<li class="chapter" data-level="5.2" data-path="vectors.html"><a href="vectors.html#manipulating-vectors"><i class="fa fa-check"></i><b>5.2</b> Manipulating vectors</a></li>
+<li class="chapter" data-level="5.3" data-path="vectors.html"><a href="vectors.html#subsetting"><i class="fa fa-check"></i><b>5.3</b> Subsetting Vectors</a></li>
+<li class="chapter" data-level="5.4" data-path="vectors.html"><a href="vectors.html#namedvectors"><i class="fa fa-check"></i><b>5.4</b> Named vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>6</b> Lists</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="lists.html"><a href="lists.html#subsetting-lists"><i class="fa fa-check"></i><b>6.1</b> Subsetting lists</a></li>
+<li class="chapter" data-level="6.2" data-path="lists.html"><a href="lists.html#namedlists"><i class="fa fa-check"></i><b>6.2</b> Named lists</a></li>
+<li class="chapter" data-level="6.3" data-path="lists.html"><a href="lists.html#listsdollar"><i class="fa fa-check"></i><b>6.3</b> The <code>$</code> operator</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>7</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="dataframes.html"><a href="dataframes.html#nolabel"><i class="fa fa-check"></i><b>7.1</b> Subsetting</a></li>
+<li class="chapter" data-level="7.2" data-path="dataframes.html"><a href="dataframes.html#lists-and-data-frames"><i class="fa fa-check"></i><b>7.2</b> Lists and data frames</a></li>
+<li class="chapter" data-level="7.3" data-path="dataframes.html"><a href="dataframes.html#summary-data-structures-in-r"><i class="fa fa-check"></i><b>7.3</b> Summary: Data structures in <em>R</em></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>8</b> Packages</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="packages.html"><a href="packages.html#installing-a-package"><i class="fa fa-check"></i><b>8.1</b> Installing a package</a></li>
+<li class="chapter" data-level="8.2" data-path="packages.html"><a href="packages.html#using-a-package"><i class="fa fa-check"></i><b>8.2</b> Using a package</a></li>
+<li class="chapter" data-level="8.3" data-path="packages.html"><a href="packages.html#getting-help-for-packages"><i class="fa fa-check"></i><b>8.3</b> Getting help for packages</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>9</b> Importing Data</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="importing-data.html"><a href="importing-data.html#import-via-rstudio-interface"><i class="fa fa-check"></i><b>9.1</b> Import via RStudio interface</a></li>
+<li class="chapter" data-level="9.2" data-path="importing-data.html"><a href="importing-data.html#import-via-console-or-script"><i class="fa fa-check"></i><b>9.2</b> Import via Console or Script</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Wrangling</b></span></li>
+<li class="chapter" data-level="10" data-path="tidyverse-package-collection.html"><a href="tidyverse-package-collection.html"><i class="fa fa-check"></i><b>10</b> Tidyverse package collection</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="tidyverse-package-collection.html"><a href="tidyverse-package-collection.html#tibble-is-the-new-data-frame"><i class="fa fa-check"></i><b>10.1</b> Tibble is the new Data Frame</a></li>
+<li class="chapter" data-level="10.2" data-path="tidyverse-package-collection.html"><a href="tidyverse-package-collection.html#naming-convention-_-or-."><i class="fa fa-check"></i><b>10.2</b> Naming convention (“<code>_</code>” or “<code>.</code>”)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="transformingdata.html"><a href="transformingdata.html"><i class="fa fa-check"></i><b>11</b> Transforming Data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="transformingdata.html"><a href="transformingdata.html#selecting-rows-filter"><i class="fa fa-check"></i><b>11.1</b> Selecting rows: <code>Filter()</code></a></li>
+<li class="chapter" data-level="11.2" data-path="transformingdata.html"><a href="transformingdata.html#sorting-rows-arrange"><i class="fa fa-check"></i><b>11.2</b> Sorting rows: <code>arrange()</code></a></li>
+<li class="chapter" data-level="11.3" data-path="transformingdata.html"><a href="transformingdata.html#selecting-arranging-variables-select"><i class="fa fa-check"></i><b>11.3</b> Selecting &amp; Arranging Variables: <code>select()</code></a></li>
+<li class="chapter" data-level="11.4" data-path="transformingdata.html"><a href="transformingdata.html#add-new-variables-mutate"><i class="fa fa-check"></i><b>11.4</b> Add new variables: <code>mutate()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="summarising.html"><a href="summarising.html"><i class="fa fa-check"></i><b>12</b> Summarizing &amp; Aggregating Data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="summarising.html"><a href="summarising.html#aggregating-data-with-summarise"><i class="fa fa-check"></i><b>12.1</b> Aggregating data with <code>summarise()</code></a></li>
+<li class="chapter" data-level="12.2" data-path="summarising.html"><a href="summarising.html#grouping-data-by-group_by"><i class="fa fa-check"></i><b>12.2</b> Grouping data by <code>group_by()</code></a></li>
+<li class="chapter" data-level="12.3" data-path="summarising.html"><a href="summarising.html#summary"><i class="fa fa-check"></i><b>12.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="structuring-tabular-data.html"><a href="structuring-tabular-data.html"><i class="fa fa-check"></i><b>13</b> Structuring Tabular Data</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="structuring-tabular-data.html"><a href="structuring-tabular-data.html#tidy-data"><i class="fa fa-check"></i><b>13.1</b> Tidy data</a></li>
+<li class="chapter" data-level="13.2" data-path="structuring-tabular-data.html"><a href="structuring-tabular-data.html#long-and-wide-data"><i class="fa fa-check"></i><b>13.2</b> Long and Wide Data</a></li>
+</ul></li>
+<li class="part"><span><b>IV Data Processing &amp; Visualizing</b></span></li>
+<li class="chapter" data-level="14" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>14</b> Missing Values</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="missing-values.html"><a href="missing-values.html#na-not-available"><i class="fa fa-check"></i><b>14.1</b> <code>NA</code>: Not Available</a></li>
+<li class="chapter" data-level="14.2" data-path="missing-values.html"><a href="missing-values.html#missings-in-data-frames"><i class="fa fa-check"></i><b>14.2</b> Missings in data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>15</b> Factors</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>15.1</b> Creating factors</a></li>
+<li class="chapter" data-level="15.2" data-path="factors.html"><a href="factors.html#advantages-of-factors"><i class="fa fa-check"></i><b>15.2</b> Advantages of factors</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="pipes.html"><a href="pipes.html"><i class="fa fa-check"></i><b>16</b> Pipes</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="pipes.html"><a href="pipes.html#the-pipe-operator"><i class="fa fa-check"></i><b>16.1</b> The pipe operator: <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="16.2" data-path="pipes.html"><a href="pipes.html#motivation-for-pipes"><i class="fa fa-check"></i><b>16.2</b> Motivation for pipes</a></li>
+<li class="chapter" data-level="16.3" data-path="pipes.html"><a href="pipes.html#building-a-processing-pipeline"><i class="fa fa-check"></i><b>16.3</b> Building a processing pipeline</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="visualizing-data.html"><a href="visualizing-data.html"><i class="fa fa-check"></i><b>17</b> Visualizing Data</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="visualizing-data.html"><a href="visualizing-data.html#plots-with-base-r"><i class="fa fa-check"></i><b>17.1</b> Plots with base <em>R</em></a></li>
+<li class="chapter" data-level="17.2" data-path="visualizing-data.html"><a href="visualizing-data.html#ggplot2-plotting-in-tidyverse"><i class="fa fa-check"></i><b>17.2</b> ggplot2: Plotting in Tidyverse</a></li>
+<li class="chapter" data-level="17.3" data-path="visualizing-data.html"><a href="visualizing-data.html#geoms-or-plot-types"><i class="fa fa-check"></i><b>17.3</b> Geoms or plot types</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="readings.html"><a href="readings.html"><i class="fa fa-check"></i><b>A</b> Suggested Readings</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="readings.html"><a href="readings.html#cheatsheets"><i class="fa fa-check"></i><b>A.1</b> Cheat sheets</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="packagelist.html"><a href="packagelist.html"><i class="fa fa-check"></i><b>B</b> Interesting Packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="packagelist.html"><a href="packagelist.html#rmarkdown"><i class="fa fa-check"></i>RMarkdown</a></li>
+<li class="chapter" data-level="" data-path="packagelist.html"><a href="packagelist.html#shiny-apps"><i class="fa fa-check"></i>Shiny Apps</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="compatibility-issues-and-workarounds.html"><a href="compatibility-issues-and-workarounds.html"><i class="fa fa-check"></i><b>C</b> Compatibility Issues and Workarounds</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="compatibility-issues-and-workarounds.html"><a href="compatibility-issues-and-workarounds.html#tidyverseinstall"><i class="fa fa-check"></i><b>C.1</b> Can’t install <em>Tidyverse</em> on MacOS or Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="course-exam.html"><a href="course-exam.html"><i class="fa fa-check"></i><b>D</b> Course Exam</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-exam.html"><a href="course-exam.html#examination-procedure"><i class="fa fa-check"></i>Examination procedure</a></li>
+<li class="chapter" data-level="" data-path="course-exam.html"><a href="course-exam.html#what-is-allowed-to-use-and-what-will-be-consider-as-an-attempt-of-fraud"><i class="fa fa-check"></i>What is allowed to use and what will be consider as an attempt of fraud?</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://canvas.eur.nl/courses/51320 target="blank">Block 4.2P on Canvas</a></li>
+<li><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    target="blank"><img alt="Creative Commons License"
+    style="border-width:0"
+    src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Processing and Analysis in <em>R</em> (2025)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="summarising" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">12</span> Summarizing &amp; Aggregating Data<a href="summarising.html#summarising" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="aggregating-data-with-summarise" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Aggregating data with <code>summarise()</code><a href="summarising.html#aggregating-data-with-summarise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Create summary statistics for the dataset can be done with the command <code>summarise()</code>. Check the data transformation <a href="readings.html#cheatsheets">cheat sheet</a> for various summary functions. Some common ones are: <code>mean()</code>, <code>sd()</code>, <code>n()</code>, <code>sum()</code> or <code>quantile()</code>.</p>
+<p>For instance,</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="summarising.html#cb205-1" tabindex="-1"></a>summary_df <span class="ot">&lt;-</span> <span class="fu">summarise</span>(teach,</span>
+<span id="cb205-2"><a href="summarising.html#cb205-2" tabindex="-1"></a>                <span class="at">n_obs=</span><span class="fu">n</span>(),</span>
+<span id="cb205-3"><a href="summarising.html#cb205-3" tabindex="-1"></a>                <span class="at">m_statistics =</span> <span class="fu">mean</span>(statistics),</span>
+<span id="cb205-4"><a href="summarising.html#cb205-4" tabindex="-1"></a>                <span class="at">m_cog_psy =</span> <span class="fu">mean</span>(cog_psy),</span>
+<span id="cb205-5"><a href="summarising.html#cb205-5" tabindex="-1"></a>                <span class="at">useless =</span> <span class="fu">sum</span>(statistics<span class="sc">+</span>cog_psy) )</span>
+<span id="cb205-6"><a href="summarising.html#cb205-6" tabindex="-1"></a><span class="fu">print</span>(summary_df)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 4
+##   n_obs m_statistics m_cog_psy useless
+##   &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1    60         15.4      18.2    2017</code></pre>
+<p>As you see this command generates a data frame (that we save in <code>summary_df</code>) with the number of observations (<code>n_obs</code>), the mean grade for statistics and cognitive psychology (<code>m_statistics</code> &amp; <code>m_cog_psy</code>) and a <code>useless</code> variable that is sum off all scores in statistics and cognitive psychology. The mean grade in <code>statistics</code> is lower than in <code>cog_psy</code>.</p>
+<p>Ok, fine, but you may think now: “I could get the same information much simpler with the base-<em>R</em>. Why shall I use this strange <code>summarise()</code> thing?” The actual power of it becomes clear if used together with the <code>group_by()</code> command described in the next section.</p>
+</div>
+<div id="grouping-data-by-group_by" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Grouping data by <code>group_by()</code><a href="summarising.html#grouping-data-by-group_by" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you want that all <em>Tidyverse</em>-operations will be done separately for different parts of a tibble or data frame, you can group your data and use a grouped tibble. You group a data with the <code>group_by()</code> command:</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="summarising.html#cb207-1" tabindex="-1"></a>teach_grouped <span class="ot">&lt;-</span> <span class="fu">group_by</span>(teach, city)</span>
+<span id="cb207-2"><a href="summarising.html#cb207-2" tabindex="-1"></a><span class="fu">print</span>(teach_grouped)</span></code></pre></div>
+<pre><code>## # A tibble: 60 × 6
+## # Groups:   city [5]
+##    student teaching_method city      time  statistics cog_psy
+##      &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+##  1      28 method_A        Leiden    after         37      35
+##  2      19 method_A        Rotterdam after         34      32
+##  3       4 method_A        Utrecht   after         32      37
+##  4      17 method_B        Rotterdam after         30      33
+##  5      10 method_A        Groningen after         29      35
+##  6       2 method_B        Nijmegen  after         28      40
+##  7      11 method_B        Utrecht   after         28      31
+##  8      16 method_A        Nijmegen  after         28      30
+##  9      25 method_A        Groningen after         28      32
+## 10       5 method_B        Nijmegen  after         27      29
+## # ℹ 50 more rows</code></pre>
+<p>You actually see nothing special happening and the new data frame <code>teach_grouped</code> looks exactly like the <code>teach</code>. The curial difference is for <em>R</em> that the new data frame is grouped. You see that in the second line of the output. The variable <code>city</code> defines the group. There are in total 5 groups.</p>
+<p>If we now apply the <code>summarise()</code> command on the new group data, we get the aggregated data for separately for each group :</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="summarising.html#cb209-1" tabindex="-1"></a>summary_df <span class="ot">&lt;-</span> <span class="fu">summarise</span>(teach_grouped,   <span class="co"># use the new grouped df</span></span>
+<span id="cb209-2"><a href="summarising.html#cb209-2" tabindex="-1"></a>                <span class="at">n_obs=</span><span class="fu">n</span>(),</span>
+<span id="cb209-3"><a href="summarising.html#cb209-3" tabindex="-1"></a>                <span class="at">m_statistics =</span> <span class="fu">mean</span>(statistics),</span>
+<span id="cb209-4"><a href="summarising.html#cb209-4" tabindex="-1"></a>                <span class="at">m_cog_psy =</span> <span class="fu">mean</span>(cog_psy),</span>
+<span id="cb209-5"><a href="summarising.html#cb209-5" tabindex="-1"></a>                <span class="at">useless =</span> <span class="fu">sum</span>(statistics<span class="sc">+</span>cog_psy) )</span>
+<span id="cb209-6"><a href="summarising.html#cb209-6" tabindex="-1"></a><span class="fu">print</span>(summary_df)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 5
+##   city      n_obs m_statistics m_cog_psy useless
+##   &lt;chr&gt;     &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 Groningen    12         15.9      20.2     433
+## 2 Leiden       12         12.8      15.7     341
+## 3 Nijmegen     12         14.8      17.9     393
+## 4 Rotterdam    12         15.7      17.4     397
+## 5 Utrecht      12         17.9      19.8     453</code></pre>
+<p>You see the aggregated data for each city. In each city we have 12 measures. In our fake dataset, the statistics grades seems to be on average higher in Utrecht than in Leiden.</p>
+<!--
+<div class="important">
+<p>Some versions of <em>Tidyverse</em> will produce a warning when
+summarizing grouped data. You can simply ignore this message.</p>
+</div>
+-->
+<div id="grouping-for-multiple-variables" class="section level3 unnumbered hasAnchor">
+<h3>Grouping for multiple variables<a href="summarising.html#grouping-for-multiple-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Like with the other <em>Tidyverse</em> functions you can add variables and further group the dataset. Let’s get the aggregated data for each <code>teaching_method</code> and in each <code>city</code>:</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="summarising.html#cb211-1" tabindex="-1"></a>teach_grouped <span class="ot">&lt;-</span> <span class="fu">group_by</span>(teach, city, teaching_method)</span>
+<span id="cb211-2"><a href="summarising.html#cb211-2" tabindex="-1"></a>summary_df <span class="ot">&lt;-</span> <span class="fu">summarise</span>(teach_grouped,</span>
+<span id="cb211-3"><a href="summarising.html#cb211-3" tabindex="-1"></a>                <span class="at">n_obs=</span><span class="fu">n</span>(),</span>
+<span id="cb211-4"><a href="summarising.html#cb211-4" tabindex="-1"></a>                <span class="at">m_statistics =</span> <span class="fu">mean</span>(statistics),</span>
+<span id="cb211-5"><a href="summarising.html#cb211-5" tabindex="-1"></a>                <span class="at">m_cog_psy =</span> <span class="fu">mean</span>(cog_psy),</span>
+<span id="cb211-6"><a href="summarising.html#cb211-6" tabindex="-1"></a>                <span class="at">useless =</span> <span class="fu">sum</span>(statistics<span class="sc">+</span>cog_psy) )</span>
+<span id="cb211-7"><a href="summarising.html#cb211-7" tabindex="-1"></a>summary_df</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">city</th>
+<th align="left">teaching_method</th>
+<th align="right">n_obs</th>
+<th align="right">m_statistics</th>
+<th align="right">m_cog_psy</th>
+<th align="right">useless</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Groningen</td>
+<td align="left">control</td>
+<td align="right">2</td>
+<td align="right">12.00000</td>
+<td align="right">11.00000</td>
+<td align="right">46</td>
+</tr>
+<tr class="even">
+<td align="left">Groningen</td>
+<td align="left">method_A</td>
+<td align="right">6</td>
+<td align="right">17.83333</td>
+<td align="right">21.66667</td>
+<td align="right">237</td>
+</tr>
+<tr class="odd">
+<td align="left">Groningen</td>
+<td align="left">method_B</td>
+<td align="right">4</td>
+<td align="right">15.00000</td>
+<td align="right">22.50000</td>
+<td align="right">150</td>
+</tr>
+<tr class="even">
+<td align="left">Leiden</td>
+<td align="left">control</td>
+<td align="right">8</td>
+<td align="right">9.87500</td>
+<td align="right">11.87500</td>
+<td align="right">174</td>
+</tr>
+<tr class="odd">
+<td align="left">Leiden</td>
+<td align="left">method_A</td>
+<td align="right">4</td>
+<td align="right">18.50000</td>
+<td align="right">23.25000</td>
+<td align="right">167</td>
+</tr>
+<tr class="even">
+<td align="left">Nijmegen</td>
+<td align="left">control</td>
+<td align="right">4</td>
+<td align="right">10.25000</td>
+<td align="right">11.75000</td>
+<td align="right">88</td>
+</tr>
+<tr class="odd">
+<td align="left">Nijmegen</td>
+<td align="left">method_A</td>
+<td align="right">2</td>
+<td align="right">18.00000</td>
+<td align="right">19.50000</td>
+<td align="right">75</td>
+</tr>
+<tr class="even">
+<td align="left">Nijmegen</td>
+<td align="left">method_B</td>
+<td align="right">6</td>
+<td align="right">16.83333</td>
+<td align="right">21.50000</td>
+<td align="right">230</td>
+</tr>
+<tr class="odd">
+<td align="left">Rotterdam</td>
+<td align="left">control</td>
+<td align="right">4</td>
+<td align="right">8.00000</td>
+<td align="right">11.00000</td>
+<td align="right">76</td>
+</tr>
+<tr class="even">
+<td align="left">Rotterdam</td>
+<td align="left">method_A</td>
+<td align="right">4</td>
+<td align="right">20.00000</td>
+<td align="right">23.50000</td>
+<td align="right">174</td>
+</tr>
+<tr class="odd">
+<td align="left">Rotterdam</td>
+<td align="left">method_B</td>
+<td align="right">4</td>
+<td align="right">19.00000</td>
+<td align="right">17.75000</td>
+<td align="right">147</td>
+</tr>
+<tr class="even">
+<td align="left">Utrecht</td>
+<td align="left">control</td>
+<td align="right">2</td>
+<td align="right">11.50000</td>
+<td align="right">12.00000</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="left">Utrecht</td>
+<td align="left">method_A</td>
+<td align="right">4</td>
+<td align="right">19.50000</td>
+<td align="right">22.00000</td>
+<td align="right">166</td>
+</tr>
+<tr class="even">
+<td align="left">Utrecht</td>
+<td align="left">method_B</td>
+<td align="right">6</td>
+<td align="right">19.00000</td>
+<td align="right">21.00000</td>
+<td align="right">240</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You see that the conditions are not evenly distributed over the cities. In Leiden were more students (8) in the control condition with no teaching than in Utrecht (2). This explains possibly the difference in the statistic grades.</p>
+<div class="myexercise">
+<p>
+Calculate the mean statistics grade separate for all
+<code>teaching_methods</code> and for the <code>time</code> before and
+after the course.
+</p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="summarising.html#cb212-1" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(teach, time, teaching_method), <span class="at">m_statistics =</span> <span class="fu">mean</span>(statistics))</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">time</th>
+<th align="left">teaching_method</th>
+<th align="right">m_statistics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">after</td>
+<td align="left">control</td>
+<td align="right">10.2</td>
+</tr>
+<tr class="even">
+<td align="left">after</td>
+<td align="left">method_A</td>
+<td align="right">28.5</td>
+</tr>
+<tr class="odd">
+<td align="left">after</td>
+<td align="left">method_B</td>
+<td align="right">24.1</td>
+</tr>
+<tr class="even">
+<td align="left">before</td>
+<td align="left">control</td>
+<td align="right">9.7</td>
+</tr>
+<tr class="odd">
+<td align="left">before</td>
+<td align="left">method_A</td>
+<td align="right">9.0</td>
+</tr>
+<tr class="even">
+<td align="left">before</td>
+<td align="left">method_B</td>
+<td align="right">11.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="myexercise">
+<p>
+Are those who are better in statistics also better in cognitive
+psychology?
+</p>
+<p>
+Use a simple median-split comparison: Calculate the
+<code>median()</code> of all statistics grades and calculate the mean
+cognitive psychology grade for those who have higher grades than the
+median in statistics and those who have lower grades.
+</p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="summarising.html#cb213-1" tabindex="-1"></a>teach2 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(teach, <span class="at">good_in_stats =</span> statistics<span class="sc">&gt;</span><span class="fu">median</span>(statistics))</span>
+<span id="cb213-2"><a href="summarising.html#cb213-2" tabindex="-1"></a>teach2_grouped <span class="ot">&lt;-</span> <span class="fu">group_by</span>(teach2, good_in_stats)</span>
+<span id="cb213-3"><a href="summarising.html#cb213-3" tabindex="-1"></a><span class="fu">summarize</span>(teach2_grouped, <span class="at">m_cog_psy =</span> <span class="fu">mean</span>(cog_psy))</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">good_in_stats</th>
+<th align="right">m_cog_psy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">FALSE</td>
+<td align="right">10.71429</td>
+</tr>
+<tr class="even">
+<td align="left">TRUE</td>
+<td align="right">28.68000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>..and for the geeks in one line of code:</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="summarising.html#cb214-1" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(teach, statistics <span class="sc">&gt;</span> <span class="fu">median</span>(statistics)), </span>
+<span id="cb214-2"><a href="summarising.html#cb214-2" tabindex="-1"></a>                                <span class="at">m_cog_psy =</span> <span class="fu">mean</span>(cog_psy))</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">statistics &gt; median(statistics)</th>
+<th align="right">m_cog_psy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">FALSE</td>
+<td align="right">10.71429</td>
+</tr>
+<tr class="even">
+<td align="left">TRUE</td>
+<td align="right">28.68000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>TRUE is the group with a grade <code>&gt; median(statistics)</code>. FALSE is the low stats group.</p>
+</div>
+</div>
+<div id="ungrouping-a-grouped-data-frame" class="section level3 unnumbered hasAnchor">
+<h3>Ungrouping a grouped data frame<a href="summarising.html#ungrouping-a-grouped-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can remove the grouping of a data frame with <code>ungroup()</code>.</p>
+</div>
+</div>
+<div id="summary" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Summary<a href="summarising.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The last two chapters introduced the following six <em>Tidyverse</em> -commands, which all stems actually from the subpackage <code>dplyr</code> in the <code>tidyverse</code>.</p>
+<ul>
+<li><p><code>filter()</code> Include or exclude certain cases (rows)</p></li>
+<li><p><code>arrange()</code> Change the order of cases (rows)</p></li>
+<li><p><code>select()</code> Include or exclude certain variables (columns)</p></li>
+<li><p><code>mutate()</code> Create new variables (columns)</p></li>
+<li><p><code>summarise()</code> Derive aggregate variables for groups of observations
+subsequent</p></li>
+<li><p><code>group_by()</code> Organize the data into groups</p></li>
+</ul>
+<p>These six functions are known as ’single table verbs’ because they only operate on one table at a time. Although the operations of these functions may seem very simplistic, it’s amazing what you can accomplish when you string them together: Some people claimed that 90% of data analysis can be reduced to the operations described by these six functions.</p>
+<p>Again, you don’t have to remember everything in these chapters - the important thing is that you know where to come and look for help when you need to do particular tasks. Being good at coding really is just being good at knowing what to copy and paste. You may also find the <a href="readings.html#cheatsheets">cheat sheet</a> about data transformation useful at this point.</p>
+
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("webex-total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("webex-correct").length + " of " +
+      document.getElementsByClassName("webex-solveme").length + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+  
+  if (my_answer !== "" & real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+  } else {
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);  
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }  
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }  
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+  
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off"); 
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+    
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+    
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="transformingdata.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="structuring-tabular-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": false,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

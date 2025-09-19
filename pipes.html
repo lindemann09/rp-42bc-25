@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>16 Pipes | Data Processing and Analysis in R (2025)</title>
+  <meta name="description" content="16 Pipes | Data Processing and Analysis in R (2025)" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="16 Pipes | Data Processing and Analysis in R (2025)" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/R-course-logo.png" />
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="16 Pipes | Data Processing and Analysis in R (2025)" />
+  
+  
+  <meta name="twitter:image" content="/images/R-course-logo.png" />
+
+<meta name="author" content="Oliver Lindemann" />
+
+
+<meta name="date" content="2025-09-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="factors.html"/>
+<link rel="next" href="visualizing-data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+<link rel="stylesheet" href="include/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><strong>Data Processing and Analysis in R</strong></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-learning-r"><i class="fa fa-check"></i><b>1.1</b> Why learning <em>R</em>?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#what-do-i-learn-in-this-course"><i class="fa fa-check"></i><b>1.2</b> What do I learn in this course?</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-rstudio"><i class="fa fa-check"></i><b>1.3</b> What is RStudio?</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#code-examples"><i class="fa fa-check"></i><b>1.4</b> Code examples</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#trial-and-error-learning"><i class="fa fa-check"></i><b>1.5</b> Trial-and-error learning</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="findinghelp.html"><a href="findinghelp.html"><i class="fa fa-check"></i><b>2</b> Finding Help</a></li>
+<li class="part"><span><b>I Basics</b></span></li>
+<li class="chapter" data-level="3" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>3</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#installing-r-and-rstudio-on-your-pc"><i class="fa fa-check"></i><b>3.1</b> Installing <em>R</em> and <em>RStudio</em> on your PC</a></li>
+<li class="chapter" data-level="3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-project"><i class="fa fa-check"></i><b>3.2</b> Creating a Project</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>4</b> Basics of Programming in R</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="basics.html"><a href="basics.html#comments-in-program-code"><i class="fa fa-check"></i><b>4.1</b> Comments in Program Code</a></li>
+<li class="chapter" data-level="4.2" data-path="basics.html"><a href="basics.html#variables-and-objects"><i class="fa fa-check"></i><b>4.2</b> Variables and Objects</a></li>
+<li class="chapter" data-level="4.3" data-path="basics.html"><a href="basics.html#basic-operations"><i class="fa fa-check"></i><b>4.3</b> Basic operations</a></li>
+<li class="chapter" data-level="4.4" data-path="basics.html"><a href="basics.html#non-numerical-data-types"><i class="fa fa-check"></i><b>4.4</b> Non-numerical data types</a></li>
+<li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#comparing"><i class="fa fa-check"></i><b>4.5</b> Comparing values</a></li>
+<li class="chapter" data-level="4.6" data-path="basics.html"><a href="basics.html#functions"><i class="fa fa-check"></i><b>4.6</b> Functions</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Structures</b></span></li>
+<li class="chapter" data-level="5" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>5</b> Atomic Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vectors.html"><a href="vectors.html#number-sequences"><i class="fa fa-check"></i><b>5.1</b> Number sequences</a></li>
+<li class="chapter" data-level="5.2" data-path="vectors.html"><a href="vectors.html#manipulating-vectors"><i class="fa fa-check"></i><b>5.2</b> Manipulating vectors</a></li>
+<li class="chapter" data-level="5.3" data-path="vectors.html"><a href="vectors.html#subsetting"><i class="fa fa-check"></i><b>5.3</b> Subsetting Vectors</a></li>
+<li class="chapter" data-level="5.4" data-path="vectors.html"><a href="vectors.html#namedvectors"><i class="fa fa-check"></i><b>5.4</b> Named vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>6</b> Lists</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="lists.html"><a href="lists.html#subsetting-lists"><i class="fa fa-check"></i><b>6.1</b> Subsetting lists</a></li>
+<li class="chapter" data-level="6.2" data-path="lists.html"><a href="lists.html#namedlists"><i class="fa fa-check"></i><b>6.2</b> Named lists</a></li>
+<li class="chapter" data-level="6.3" data-path="lists.html"><a href="lists.html#listsdollar"><i class="fa fa-check"></i><b>6.3</b> The <code>$</code> operator</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>7</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="dataframes.html"><a href="dataframes.html#nolabel"><i class="fa fa-check"></i><b>7.1</b> Subsetting</a></li>
+<li class="chapter" data-level="7.2" data-path="dataframes.html"><a href="dataframes.html#lists-and-data-frames"><i class="fa fa-check"></i><b>7.2</b> Lists and data frames</a></li>
+<li class="chapter" data-level="7.3" data-path="dataframes.html"><a href="dataframes.html#summary-data-structures-in-r"><i class="fa fa-check"></i><b>7.3</b> Summary: Data structures in <em>R</em></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>8</b> Packages</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="packages.html"><a href="packages.html#installing-a-package"><i class="fa fa-check"></i><b>8.1</b> Installing a package</a></li>
+<li class="chapter" data-level="8.2" data-path="packages.html"><a href="packages.html#using-a-package"><i class="fa fa-check"></i><b>8.2</b> Using a package</a></li>
+<li class="chapter" data-level="8.3" data-path="packages.html"><a href="packages.html#getting-help-for-packages"><i class="fa fa-check"></i><b>8.3</b> Getting help for packages</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>9</b> Importing Data</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="importing-data.html"><a href="importing-data.html#import-via-rstudio-interface"><i class="fa fa-check"></i><b>9.1</b> Import via RStudio interface</a></li>
+<li class="chapter" data-level="9.2" data-path="importing-data.html"><a href="importing-data.html#import-via-console-or-script"><i class="fa fa-check"></i><b>9.2</b> Import via Console or Script</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Wrangling</b></span></li>
+<li class="chapter" data-level="10" data-path="tidyverse-package-collection.html"><a href="tidyverse-package-collection.html"><i class="fa fa-check"></i><b>10</b> Tidyverse package collection</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="tidyverse-package-collection.html"><a href="tidyverse-package-collection.html#tibble-is-the-new-data-frame"><i class="fa fa-check"></i><b>10.1</b> Tibble is the new Data Frame</a></li>
+<li class="chapter" data-level="10.2" data-path="tidyverse-package-collection.html"><a href="tidyverse-package-collection.html#naming-convention-_-or-."><i class="fa fa-check"></i><b>10.2</b> Naming convention (“<code>_</code>” or “<code>.</code>”)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="transformingdata.html"><a href="transformingdata.html"><i class="fa fa-check"></i><b>11</b> Transforming Data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="transformingdata.html"><a href="transformingdata.html#selecting-rows-filter"><i class="fa fa-check"></i><b>11.1</b> Selecting rows: <code>Filter()</code></a></li>
+<li class="chapter" data-level="11.2" data-path="transformingdata.html"><a href="transformingdata.html#sorting-rows-arrange"><i class="fa fa-check"></i><b>11.2</b> Sorting rows: <code>arrange()</code></a></li>
+<li class="chapter" data-level="11.3" data-path="transformingdata.html"><a href="transformingdata.html#selecting-arranging-variables-select"><i class="fa fa-check"></i><b>11.3</b> Selecting &amp; Arranging Variables: <code>select()</code></a></li>
+<li class="chapter" data-level="11.4" data-path="transformingdata.html"><a href="transformingdata.html#add-new-variables-mutate"><i class="fa fa-check"></i><b>11.4</b> Add new variables: <code>mutate()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="summarising.html"><a href="summarising.html"><i class="fa fa-check"></i><b>12</b> Summarizing &amp; Aggregating Data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="summarising.html"><a href="summarising.html#aggregating-data-with-summarise"><i class="fa fa-check"></i><b>12.1</b> Aggregating data with <code>summarise()</code></a></li>
+<li class="chapter" data-level="12.2" data-path="summarising.html"><a href="summarising.html#grouping-data-by-group_by"><i class="fa fa-check"></i><b>12.2</b> Grouping data by <code>group_by()</code></a></li>
+<li class="chapter" data-level="12.3" data-path="summarising.html"><a href="summarising.html#summary"><i class="fa fa-check"></i><b>12.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="structuring-tabular-data.html"><a href="structuring-tabular-data.html"><i class="fa fa-check"></i><b>13</b> Structuring Tabular Data</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="structuring-tabular-data.html"><a href="structuring-tabular-data.html#tidy-data"><i class="fa fa-check"></i><b>13.1</b> Tidy data</a></li>
+<li class="chapter" data-level="13.2" data-path="structuring-tabular-data.html"><a href="structuring-tabular-data.html#long-and-wide-data"><i class="fa fa-check"></i><b>13.2</b> Long and Wide Data</a></li>
+</ul></li>
+<li class="part"><span><b>IV Data Processing &amp; Visualizing</b></span></li>
+<li class="chapter" data-level="14" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>14</b> Missing Values</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="missing-values.html"><a href="missing-values.html#na-not-available"><i class="fa fa-check"></i><b>14.1</b> <code>NA</code>: Not Available</a></li>
+<li class="chapter" data-level="14.2" data-path="missing-values.html"><a href="missing-values.html#missings-in-data-frames"><i class="fa fa-check"></i><b>14.2</b> Missings in data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>15</b> Factors</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>15.1</b> Creating factors</a></li>
+<li class="chapter" data-level="15.2" data-path="factors.html"><a href="factors.html#advantages-of-factors"><i class="fa fa-check"></i><b>15.2</b> Advantages of factors</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="pipes.html"><a href="pipes.html"><i class="fa fa-check"></i><b>16</b> Pipes</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="pipes.html"><a href="pipes.html#the-pipe-operator"><i class="fa fa-check"></i><b>16.1</b> The pipe operator: <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="16.2" data-path="pipes.html"><a href="pipes.html#motivation-for-pipes"><i class="fa fa-check"></i><b>16.2</b> Motivation for pipes</a></li>
+<li class="chapter" data-level="16.3" data-path="pipes.html"><a href="pipes.html#building-a-processing-pipeline"><i class="fa fa-check"></i><b>16.3</b> Building a processing pipeline</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="visualizing-data.html"><a href="visualizing-data.html"><i class="fa fa-check"></i><b>17</b> Visualizing Data</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="visualizing-data.html"><a href="visualizing-data.html#plots-with-base-r"><i class="fa fa-check"></i><b>17.1</b> Plots with base <em>R</em></a></li>
+<li class="chapter" data-level="17.2" data-path="visualizing-data.html"><a href="visualizing-data.html#ggplot2-plotting-in-tidyverse"><i class="fa fa-check"></i><b>17.2</b> ggplot2: Plotting in Tidyverse</a></li>
+<li class="chapter" data-level="17.3" data-path="visualizing-data.html"><a href="visualizing-data.html#geoms-or-plot-types"><i class="fa fa-check"></i><b>17.3</b> Geoms or plot types</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="readings.html"><a href="readings.html"><i class="fa fa-check"></i><b>A</b> Suggested Readings</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="readings.html"><a href="readings.html#cheatsheets"><i class="fa fa-check"></i><b>A.1</b> Cheat sheets</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="packagelist.html"><a href="packagelist.html"><i class="fa fa-check"></i><b>B</b> Interesting Packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="packagelist.html"><a href="packagelist.html#rmarkdown"><i class="fa fa-check"></i>RMarkdown</a></li>
+<li class="chapter" data-level="" data-path="packagelist.html"><a href="packagelist.html#shiny-apps"><i class="fa fa-check"></i>Shiny Apps</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="compatibility-issues-and-workarounds.html"><a href="compatibility-issues-and-workarounds.html"><i class="fa fa-check"></i><b>C</b> Compatibility Issues and Workarounds</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="compatibility-issues-and-workarounds.html"><a href="compatibility-issues-and-workarounds.html#tidyverseinstall"><i class="fa fa-check"></i><b>C.1</b> Can’t install <em>Tidyverse</em> on MacOS or Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="course-exam.html"><a href="course-exam.html"><i class="fa fa-check"></i><b>D</b> Course Exam</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-exam.html"><a href="course-exam.html#examination-procedure"><i class="fa fa-check"></i>Examination procedure</a></li>
+<li class="chapter" data-level="" data-path="course-exam.html"><a href="course-exam.html#what-is-allowed-to-use-and-what-will-be-consider-as-an-attempt-of-fraud"><i class="fa fa-check"></i>What is allowed to use and what will be consider as an attempt of fraud?</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://canvas.eur.nl/courses/51320 target="blank">Block 4.2P on Canvas</a></li>
+<li><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    target="blank"><img alt="Creative Commons License"
+    style="border-width:0"
+    src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Processing and Analysis in <em>R</em> (2025)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="pipes" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">16</span> Pipes<a href="pipes.html#pipes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>You have seen in the previous chapters that if you have a raw dataset you need to apply typically multiple operations and processing steps on a dataset. The resulting data of one operations, will be used a input data for the next operations. That is, when processing and analysing data, we typically setup a processing pipeline.</p>
+<p><img src="images/pipeline.png" width="500px" style="display: block; margin: auto;" /></p>
+<p>Pipes are a powerful tool for clearly expressing a sequence of multiple operations. Pipes are a way to order your code in a more readable format.</p>
+<div id="the-pipe-operator" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> The pipe operator: <code>%&gt;%</code><a href="pipes.html#the-pipe-operator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Tidyverse</em> has the operator <code>%&gt;%</code>, which sends an object (e.g. data frame) as input for the following function:</p>
+<p>For example, instead writing</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="pipes.html#cb263-1" tabindex="-1"></a><span class="co"># classical function call</span></span>
+<span id="cb263-2"><a href="pipes.html#cb263-2" tabindex="-1"></a><span class="fu">drop_na</span>(my_data)                <span class="co"># example a</span></span>
+<span id="cb263-3"><a href="pipes.html#cb263-3" tabindex="-1"></a><span class="fu">mutate</span>(my_data, <span class="at">new_var =</span> a <span class="sc">+</span> b) <span class="co"># example b</span></span></code></pre></div>
+<p>you can write</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="pipes.html#cb264-1" tabindex="-1"></a><span class="co"># the same with pipes</span></span>
+<span id="cb264-2"><a href="pipes.html#cb264-2" tabindex="-1"></a>my_data <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()                <span class="co"># example a</span></span>
+<span id="cb264-3"><a href="pipes.html#cb264-3" tabindex="-1"></a>my_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">new_var =</span> a <span class="sc">+</span> b)  <span class="co"># example b</span></span></code></pre></div>
+<p>The two versions of example a and b do exactly the same. It’s just a different syntax. Instead having the data frame as first argument of the functions <code>drop_na()</code> or <code>mutate()</code> (first two example lines), you “push it” or “pipe it” to the following function with <code>%&gt;%</code>. That is, <em>R</em> uses the forwarded object as input for function and you can (or have to!) omit mentioning the data inside the function call (last two example lines).</p>
+<div class="geek">
+<p>
+The package that defines pipes in <em>Tidyverse</em> is called
+<code>magrittr</code>.
+</p>
+</div>
+</div>
+<div id="motivation-for-pipes" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> Motivation for pipes<a href="pipes.html#motivation-for-pipes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Why shall I use pipes? Pipes can be very handy, because you can not only send data to functions, but also the results of functions (i.e., the resulting data) to the following functions. You can build with this technology very efficiently a complex processing pipeline and your code remains well structured and readable (which this is always the aim of a good data science practice).</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="pipes.html#cb265-1" tabindex="-1"></a><span class="co"># classical function call</span></span>
+<span id="cb265-2"><a href="pipes.html#cb265-2" tabindex="-1"></a>data_with_na <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(my_data)                <span class="co"># step a</span></span>
+<span id="cb265-3"><a href="pipes.html#cb265-3" tabindex="-1"></a><span class="fu">mutate</span>(data_with_na, <span class="at">new_var =</span> a <span class="sc">+</span> b) <span class="co"># step b</span></span>
+<span id="cb265-4"><a href="pipes.html#cb265-4" tabindex="-1"></a></span>
+<span id="cb265-5"><a href="pipes.html#cb265-5" tabindex="-1"></a><span class="co"># the same with pipes</span></span>
+<span id="cb265-6"><a href="pipes.html#cb265-6" tabindex="-1"></a>my_data <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">new_var =</span> a <span class="sc">+</span> b)  <span class="co"># step a and b</span></span></code></pre></div>
+<div class="important">
+<p>
+Don’t forget, pipes work only with functions that are developed for
+this purpose. Fortunately, this is the case for all
+<em>Tidyverse</em>-functions.
+</p>
+</div>
+</div>
+<div id="building-a-processing-pipeline" class="section level2 hasAnchor" number="16.3">
+<h2><span class="header-section-number">16.3</span> Building a processing pipeline<a href="pipes.html#building-a-processing-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s have an example and use our dataset <code>teaching_method2.csv</code> (see section <a href="transformingdata.html#transformingdata">11</a>). Assume we want to calculate the mean percent correct in cognitive psychology for all cities and teaching methods. We want also to exclude the cities <em>“Leiden”</em> and <em>“Utrecht”</em>. You know we have missing values and need to deal with it.</p>
+<div class="myexercise">
+<p>
+Try to do this analysis yourself, be fore you go on.
+</p>
+</div>
+<div id="intermediatesteps" class="section level3 hasAnchor" number="16.3.1">
+<h3><span class="header-section-number">16.3.1</span> Intermediate steps<a href="pipes.html#intermediatesteps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To do it, we need to read the data and process it in multiple steps. For each step we create a new data frame and use the previous data frame as input. You are already familiar with that approach.</p>
+<p>One solution to the problem above looks, for example, like this:</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="pipes.html#cb266-1" tabindex="-1"></a><span class="co">#reading the data</span></span>
+<span id="cb266-2"><a href="pipes.html#cb266-2" tabindex="-1"></a>teach <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/teaching_method2.csv&quot;</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;Unknown&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="pipes.html#cb267-1" tabindex="-1"></a><span class="co">#remove nan values</span></span>
+<span id="cb267-2"><a href="pipes.html#cb267-2" tabindex="-1"></a>teach2 <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(teach)</span>
+<span id="cb267-3"><a href="pipes.html#cb267-3" tabindex="-1"></a></span>
+<span id="cb267-4"><a href="pipes.html#cb267-4" tabindex="-1"></a><span class="co"># filtering the cities</span></span>
+<span id="cb267-5"><a href="pipes.html#cb267-5" tabindex="-1"></a>teach3 <span class="ot">&lt;-</span> <span class="fu">filter</span>(teach2, city <span class="sc">!=</span> <span class="st">&quot;Leiden&quot;</span>, city <span class="sc">!=</span> <span class="st">&quot;Utrecht&quot;</span>)</span>
+<span id="cb267-6"><a href="pipes.html#cb267-6" tabindex="-1"></a></span>
+<span id="cb267-7"><a href="pipes.html#cb267-7" tabindex="-1"></a><span class="co"># calculating percent correct for cog.psy-</span></span>
+<span id="cb267-8"><a href="pipes.html#cb267-8" tabindex="-1"></a>teach4 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(teach3, <span class="at">percent_cog_psy=</span> cog_psy <span class="sc">*</span> <span class="dv">40</span><span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb267-9"><a href="pipes.html#cb267-9" tabindex="-1"></a></span>
+<span id="cb267-10"><a href="pipes.html#cb267-10" tabindex="-1"></a><span class="co"># group data for city and teaching method</span></span>
+<span id="cb267-11"><a href="pipes.html#cb267-11" tabindex="-1"></a>teach4_grouped <span class="ot">&lt;-</span> <span class="fu">group_by</span>(teach4, city, teaching_method)</span>
+<span id="cb267-12"><a href="pipes.html#cb267-12" tabindex="-1"></a></span>
+<span id="cb267-13"><a href="pipes.html#cb267-13" tabindex="-1"></a><span class="co"># making the summary</span></span>
+<span id="cb267-14"><a href="pipes.html#cb267-14" tabindex="-1"></a>summary_df<span class="ot">&lt;-</span> <span class="fu">summarise</span>(teach4_grouped,</span>
+<span id="cb267-15"><a href="pipes.html#cb267-15" tabindex="-1"></a>                        <span class="at">m_cog_psy =</span> <span class="fu">mean</span>(percent_cog_psy) )</span></code></pre></div>
+<p>We produced in total 6 data frames (<code>teach</code>, <code>teach2</code>, <code>teach3</code>, <code>teach4</code>, <code>teach4_grouped</code>, <code>summary_df</code>), but we are actually only interested in the last data frame, which look like this:</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="pipes.html#cb268-1" tabindex="-1"></a><span class="fu">print</span>(summary_df)</span></code></pre></div>
+<pre><code>## # A tibble: 9 × 3
+## # Groups:   city [3]
+##   city      teaching_method m_cog_psy
+##   &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt;
+## 1 Groningen control              4.4 
+## 2 Groningen method_A             7.84
+## 3 Groningen method_B             9   
+## 4 Nijmegen  control              4.7 
+## 5 Nijmegen  method_A             7.8 
+## 6 Nijmegen  method_B             9.28
+## 7 Rotterdam control              4.4 
+## 8 Rotterdam method_A             9.4 
+## 9 Rotterdam method_B             7.1</code></pre>
+<p>All the other five intermediate data frames are not really wanted as result. This is very inefficient and occupies a lot of memory.</p>
+</div>
+<div id="overwrite-the-original" class="section level3 hasAnchor" number="16.3.2">
+<h3><span class="header-section-number">16.3.2</span> Overwrite the original<a href="pipes.html#overwrite-the-original" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Instead of creating intermediate objects at each step, we could overwrite the original object:</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="pipes.html#cb270-1" tabindex="-1"></a>teach <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/teaching_method2.csv&quot;</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;Unknown&quot;</span>))</span>
+<span id="cb270-2"><a href="pipes.html#cb270-2" tabindex="-1"></a>teach <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(teach)</span>
+<span id="cb270-3"><a href="pipes.html#cb270-3" tabindex="-1"></a>teach <span class="ot">&lt;-</span> <span class="fu">filter</span>(teach, city <span class="sc">!=</span> <span class="st">&quot;Leiden&quot;</span>, city <span class="sc">!=</span> <span class="st">&quot;Utrecht&quot;</span>)</span>
+<span id="cb270-4"><a href="pipes.html#cb270-4" tabindex="-1"></a>teach <span class="ot">&lt;-</span> <span class="fu">mutate</span>(teach, <span class="at">percent_cog_psy=</span> cog_psy <span class="sc">*</span> <span class="dv">40</span><span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb270-5"><a href="pipes.html#cb270-5" tabindex="-1"></a>teach <span class="ot">&lt;-</span> <span class="fu">group_by</span>(teach, city, teaching_method)</span>
+<span id="cb270-6"><a href="pipes.html#cb270-6" tabindex="-1"></a>teach <span class="ot">&lt;-</span> <span class="fu">summarise</span>(teach, <span class="at">m_cog_psy =</span> <span class="fu">mean</span>(percent_cog_psy) )</span></code></pre></div>
+<p>This is less typing (and less thinking), so you’re less likely to make mistakes. However, there are two problems:</p>
+<ol style="list-style-type: decimal">
+<li>Debugging is painful: if you make a mistake you’ll need to re-run the complete pipeline from the beginning.</li>
+<li>The repetition of the object being transformed (we’ve written foo_foo six times!) obscures what’s changing on each line.</li>
+</ol>
+</div>
+<div id="build-a-processing-pipeline-with-pipe" class="section level3 hasAnchor" number="16.3.3">
+<h3><span class="header-section-number">16.3.3</span> Build a processing pipeline with pipe <code>%&gt;%</code><a href="pipes.html#build-a-processing-pipeline-with-pipe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Finally, we can use the pipe:</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="pipes.html#cb271-1" tabindex="-1"></a>summary_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/teaching_method2.csv&quot;</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;Unknown&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb271-2"><a href="pipes.html#cb271-2" tabindex="-1"></a>        <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb271-3"><a href="pipes.html#cb271-3" tabindex="-1"></a>        <span class="fu">filter</span>(city <span class="sc">!=</span> <span class="st">&quot;Leiden&quot;</span>, city <span class="sc">!=</span> <span class="st">&quot;Utrecht&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb271-4"><a href="pipes.html#cb271-4" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">percent_cog_psy=</span> cog_psy <span class="sc">*</span> <span class="dv">40</span><span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb271-5"><a href="pipes.html#cb271-5" tabindex="-1"></a>        <span class="fu">group_by</span>(city, teaching_method) <span class="sc">%&gt;%</span></span>
+<span id="cb271-6"><a href="pipes.html#cb271-6" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">m_cog_psy =</span> <span class="fu">mean</span>(percent_cog_psy) )</span></code></pre></div>
+<p>If you compare this code with the code in which we produced multiple <a href="pipes.html#intermediatesteps">intermediate data frames</a>, I think you see the benefit. It does not only do the same computations, it’s also faster executed (which you noticed however only if you have really big datasets).</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="pipes.html#cb272-1" tabindex="-1"></a><span class="fu">print</span>(summary_df)</span></code></pre></div>
+<pre><code>## # A tibble: 9 × 3
+## # Groups:   city [3]
+##   city      teaching_method m_cog_psy
+##   &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt;
+## 1 Groningen control              4.4 
+## 2 Groningen method_A             7.84
+## 3 Groningen method_B             9   
+## 4 Nijmegen  control              4.7 
+## 5 Nijmegen  method_A             7.8 
+## 6 Nijmegen  method_B             9.28
+## 7 Rotterdam control              4.4 
+## 8 Rotterdam method_A             9.4 
+## 9 Rotterdam method_B             7.1</code></pre>
+<!--  IDEA Missing: joining & combining data (see https://r4ds.had.co.nz/relational-data.html)
+
+## Merging Rows
+rbind
+
+## Joining Variables
+-->
+<!-- IDEA missing Functions -->
+<!-- TODO packagefinder -->
+
+</div>
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("webex-total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("webex-correct").length + " of " +
+      document.getElementsByClassName("webex-solveme").length + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+  
+  if (my_answer !== "" & real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+  } else {
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);  
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }  
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }  
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+  
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off"); 
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+    
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+    
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="factors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visualizing-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": false,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
