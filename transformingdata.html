@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11 Transforming Data | Data Processing and Analysis in R (2025)</title>
   <meta name="description" content="11 Transforming Data | Data Processing and Analysis in R (2025)" />
-  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11 Transforming Data | Data Processing and Analysis in R (2025)" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Oliver Lindemann" />
 
 
-<meta name="date" content="2025-09-19" />
+<meta name="date" content="2025-10-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1517,7 +1517,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>If you want to sort first by <code>city</code> and then by the <code>statistics</code> test score, you just provide more than one column name. Each additional listed column will be used to break ties in the values of preceding columns:</p>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="transformingdata.html#cb192-1" tabindex="-1"></a>teach <span class="ot">&lt;-</span> <span class="fu">arrange</span>(teach, city, statistics) <span class="co"># sort for city then for statistics</span></span>
-<span id="cb192-2"><a href="transformingdata.html#cb192-2" tabindex="-1"></a>teach <span class="ot">&lt;-</span> <span class="fu">arrange</span>(teach, city, statistics) <span class="co"># sort for statistics and then for city</span></span></code></pre></div>
+<span id="cb192-2"><a href="transformingdata.html#cb192-2" tabindex="-1"></a>teach <span class="ot">&lt;-</span> <span class="fu">arrange</span>(teach, statistics, city) <span class="co"># sort for statistics and then for city</span></span></code></pre></div>
 <div class="myexercise">
 <p>
 Check out the different types of sorting and use RStudios object
