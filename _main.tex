@@ -78,7 +78,6 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
-\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -213,7 +212,7 @@
 
 \title{Data Processing and Analysis in \emph{R} (2025)}
 \author{Oliver Lindemann}
-\date{2025-10-22}
+\date{2025-10-29}
 
 \begin{document}
 \maketitle
@@ -986,7 +985,7 @@ Let's try an example and just change the required argument \texttt{n} to ask \em
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  0.37219224 -0.03026824 -0.65899564  0.60278676  0.48811231
+## [1]  0.3637239 -2.1857634 -0.3349295 -0.4515940  2.1639143
 \end{verbatim}
 
 The random numbers have a mean of 0 and an SD of 1. Of course, since this are random numbers, you have probably got different numbers. Run the function again and you will see that you get each time different `'random'\,' numbers.
@@ -1000,7 +999,7 @@ Now we can change the additional arguments to produce a different set of numbers
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 107.83825  87.20720 103.51363 110.80496  80.01498
+## [1] 107.24725  85.99279  79.69745  96.46932 123.49536
 \end{verbatim}
 
 This time \emph{R} has still produced 5 random numbers, but now this set of numbers has a mean of 100 and a standard deviation of 15 as specified (this is the distribution of the scores in many IQ tests). Always remember to use the help documentation to help you understand what arguments a function requires.
@@ -1245,8 +1244,8 @@ Drawing random numbers from a normal distribution has already been discussed in 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 0.3660805 0.8881438 0.7830862 0.1582853 0.9830412 0.7942452 0.6246340
-##  [8] 0.8478174 0.3602212 0.9423972
+##  [1] 0.29468485 0.65363520 0.02466473 0.36034440 0.41885732 0.32357347
+##  [7] 0.63647507 0.12979644 0.57414429 0.07392820
 \end{verbatim}
 
 \begin{Shaded}
@@ -1256,8 +1255,8 @@ Drawing random numbers from a normal distribution has already been discussed in 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 44.20808 79.86919 23.50176 83.17336 49.97226 52.36243 41.05540 28.65328
-##  [9] 70.17529 49.04686
+##  [1] 38.19948 85.75651 22.12621 64.04752 45.00660 52.61016 22.53853 24.13841
+##  [9] 80.55759 60.18905
 \end{verbatim}
 
 \begin{geek}
@@ -1944,13 +1943,13 @@ in this dataset?
 \end{Shaded}
 
 \begin{verbatim}
-##    variable_a        variable_b        variable_c
-##  Min.   :-194.26   Min.   :-2.1450   Min.   :10  
-##  1st Qu.:  22.11   1st Qu.:-0.9466   1st Qu.:10  
-##  Median :  87.63   Median :-0.1901   Median :10  
-##  Mean   :  85.19   Mean   :-0.1393   Mean   :10  
-##  3rd Qu.: 147.15   3rd Qu.: 0.7571   3rd Qu.:10  
-##  Max.   : 399.08   Max.   : 2.9604   Max.   :10  
+##    variable_a        variable_b         variable_c
+##  Min.   :-148.33   Min.   :-2.61325   Min.   :10  
+##  1st Qu.:  19.09   1st Qu.:-0.62624   1st Qu.:10  
+##  Median :  80.69   Median :-0.10928   Median :10  
+##  Mean   :  87.22   Mean   :-0.06252   Mean   :10  
+##  3rd Qu.: 162.65   3rd Qu.: 0.65894   3rd Qu.:10  
+##  Max.   : 408.47   Max.   : 2.54737   Max.   :10  
 ##                    NA's   :131
 \end{verbatim}
 
@@ -2278,7 +2277,7 @@ Now that the \texttt{praise} package is loaded, you can use the function in that
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "You are impeccable!"
+## [1] "You are slick!"
 \end{verbatim}
 
 \emph{(As you see, you can do really useful things with \emph{R} \texttt{;-)})}
@@ -2334,7 +2333,6 @@ the newly installed \texttt{readxl}-package.
 
 A crucial function of a statistical software is of course the ability to read data from files. There are many different types of files that you might work with when doing data analysis. These different file types are usually distinguished by the three letter extension following a period at the end of the file name. Here are some examples of functions (and packages!) that you can use to import data from different file types:
 
-{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1857}}
   >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3429}}
@@ -2361,7 +2359,6 @@ Writing
 .sav & SPSS data & \texttt{haven::read\_sav()} & \texttt{haven::write\_sav()} \\
 .dta & Stata data & \texttt{haven::read\_dta()} & \texttt{haven::write\_dta()} \\
 \end{longtable}
-}
 
 As you see, different packages that are dealing with data import. You have already installed the packages \texttt{readxl} and \texttt{readr} in the previous exercise.
 
@@ -2483,13 +2480,13 @@ As with all \emph{R} -packages, if you want to make use of it in yours scripts, 
 \end{Shaded}
 
 \begin{verbatim}
-## -- Attaching core tidyverse packages ------------------------------------------------------------- tidyverse 2.0.0 --
+## -- Attaching core tidyverse packages ------------------------------------------------------------------------------------------------------------------------------------- tidyverse 2.0.0 --
 ## v dplyr     1.1.4     v readr     2.1.5
 ## v forcats   1.0.0     v stringr   1.5.1
-## v ggplot2   3.5.2     v tibble    3.2.1
+## v ggplot2   3.5.2     v tibble    3.3.0
 ## v lubridate 1.9.4     v tidyr     1.3.1
-## v purrr     1.0.4     
-## -- Conflicts ------------------------------------------------------------------------------- tidyverse_conflicts() --
+## v purrr     1.1.0     
+## -- Conflicts ------------------------------------------------------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
@@ -4324,7 +4321,7 @@ By the way: To calculate the correlation coefficient \(r\), you can use the func
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.5742737
+## [1] 0.5386102
 \end{verbatim}
 
 \webexunhide
@@ -4610,7 +4607,6 @@ Further resources
 
 \section{Interesting Packages}\label{packagelist}
 
-{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
@@ -4636,7 +4632,6 @@ Description
 \href{https://cran.r-project.org/web/packages/apaTables/index.html}{apaTables} & Create American Psychological Association (APA) style tables \\
 \href{https://cran.r-project.org/web/packages/rtweet/index.html}{rtweet} & Collecting Twitter data \\
 \end{longtable}
-}
 
 \subsubsection*{Examples Analyses}\label{examples-analyses}
 \addcontentsline{toc}{subsubsection}{Examples Analyses}
